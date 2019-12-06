@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -35,28 +38,28 @@ public class MainActivity extends AppCompatActivity {
     public static TextView goalNumber;
     public static TextView percentageText;
     public static SeekBar seekBar;
-    public static int sec,min;    //時間變數
-    public static int count,goalnum;
+    public static int sec, min;    //時間變數
+    public static int count, goalnum;
     public static double percentage;
 
     static Timer timer;
-    Button reset,setGoal;
+    Button reset, setGoal;
     ImageButton playButton;
-    public static Boolean pause=true;
+    public static Boolean pause = true;
     int runPic;
-    Drawable d1=Drawable.createFromPath("@android:drawable/sample1");
+    Drawable d1 = Drawable.createFromPath("@android:drawable/sample1");
 
-    private View.OnClickListener buttonlistener=new View.OnClickListener() {
+    private View.OnClickListener buttonlistener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            switch (v.getId())
-            { case R.id.Reset:
-                resetEvent();
-                break;
-                case R.id.PlayButton  :
+            switch (v.getId()) {
+                case R.id.Reset:
+                    resetEvent();
+                    break;
+                case R.id.PlayButton:
                     pauseEvent();
                     break;
-                case R.id.setGoal  :
+                case R.id.setGoal:
                     setEvent();
                     break;
             }
@@ -70,12 +73,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //主畫面物件設定
         square = findViewById(R.id.square);
-        numText=findViewById(R.id.numText);
-        secText=findViewById(R.id.secText);
-        minText=findViewById(R.id.minText);
-        goalNumber=findViewById(R.id.goalNumber);
-        percentageText=findViewById(R.id.percentageText);
-        seekBar=findViewById(R.id.seekBar);
+        numText = findViewById(R.id.numText);
+        secText = findViewById(R.id.secText);
+        minText = findViewById(R.id.minText);
+        goalNumber = findViewById(R.id.goalNumber);
+        percentageText = findViewById(R.id.percentageText);
+        seekBar = findViewById(R.id.seekBar);
         seekBar.setClickable(false);
         seekBar.setFocusable(false);
         seekBar.setEnabled(false);
@@ -86,20 +89,20 @@ public class MainActivity extends AppCompatActivity {
 
         timer = new Timer();//時間函示初始化
         //這邊開始跑時間執行緒
-        final  TimerTask task = new TimerTask() {
+        final TimerTask task = new TimerTask() {
             @Override
             public void run() {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         //秒數設定
-                        if(pause==false){
+                        if (pause == false) {
                             sec++;
-                            if(sec%60==0){
+                            if (sec % 60 == 0) {
                                 min++;
                                 minText.setText(String.valueOf(min));
                             }
-                            sec=sec%60;
+                            sec = sec % 60;
                             secText.setText(String.valueOf(sec));
                         }
                     }
@@ -109,21 +112,60 @@ public class MainActivity extends AppCompatActivity {
         timer.schedule(task, 1000, 1000);//時間在幾毫秒過後開始以多少毫秒執行
 
         //按鈕統一設定
-        setGoal=findViewById(R.id.setGoal);
-        reset=findViewById(R.id.Reset);
-
-        playButton=findViewById(R.id.PlayButton);
+        setGoal = findViewById(R.id.setGoal);
+        reset = findViewById(R.id.Reset);
+        playButton = findViewById(R.id.PlayButton);
         reset.setOnClickListener(buttonlistener);
         playButton.setOnClickListener(buttonlistener);
         setGoal.setOnClickListener(buttonlistener);
 
+
         //歸零設定
 
 
-       // gifSetting();
+        gifSetting();
+
+
+//設定動畫
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
+            int progress = 0;
+
+            @Override
+
+            public void onProgressChanged(SeekBar seekBar, int progresValue, boolean fromUser) {
+
+                progress = progresValue;
+
+                Resources res = getResources();
+                Drawable thumb = res.getDrawable(R.drawable.pikachu);
+                int h = progress * 15;
+                int w = h;
+                Bitmap bmpOrg = ((BitmapDrawable) thumb).getBitmap();
+                Bitmap bmpScaled = Bitmap.createScaledBitmap(bmpOrg, w, h, true);
+                Drawable newThumb = new BitmapDrawable(res, bmpScaled);
+                newThumb.setBounds(0, 0, newThumb.getIntrinsicWidth(), newThumb.getIntrinsicHeight());
+                seekBar.setThumb(newThumb);
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
 
 
     }
+
+//設定動畫結束
+
+
 
     private void gifSetting(){
         //GIF設定
@@ -136,6 +178,9 @@ public class MainActivity extends AppCompatActivity {
         }
         //GIF設定結束
     }
+
+
+
     private void setEvent(){
 
         count=0;
@@ -168,6 +213,8 @@ public class MainActivity extends AppCompatActivity {
 
             }
         };
+
+
         //設定圖片點擊監聽
         ImageView pic1,pic2;
         pic1=view.findViewById(R.id.pic1);
@@ -197,13 +244,15 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+
     private void resetEvent(){
         count=0;
         sec=0;
         min=0;
         percentage=0;
         percentageText.setText("0");
-        seekBar.setProgress(0);
+        seekBar.setProgress(1);
         numText.setText(String.valueOf(count));
         secText.setText(String.valueOf(count));
         minText.setText(String.valueOf(count));
