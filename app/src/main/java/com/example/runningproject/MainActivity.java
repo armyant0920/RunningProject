@@ -120,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
         //歸零設定
 
 
-        gifSetting();
+       // gifSetting();
 
 
     }
@@ -137,6 +137,7 @@ public class MainActivity extends AppCompatActivity {
         //GIF設定結束
     }
     private void setEvent(){
+
         count=0;
         sec=0;
         min=0;
