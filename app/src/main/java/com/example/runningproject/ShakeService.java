@@ -65,7 +65,7 @@ public class ShakeService extends Service implements SensorEventListener {
 //                MainActivity.percentageText.setText(String.valueOf(MainActivity.percentage));
                 MainActivity.percentageText.setText(s);
                 if(MainActivity.count >= MainActivity.goalnum)
-                {Toast.makeText(this,"已完成目標",Toast.LENGTH_SHORT).show();}
+                {Toast.makeText(this,"我身材好吧!!",Toast.LENGTH_SHORT).show();}
 
 //                Log.d("AccelLast=",String.valueOf(mAccelLast));
 //                Log.d("delta=",String.valueOf(delta));

@@ -38,7 +38,7 @@
             android:layout_height="200dp"
             android:clickable="true"
             android:hapticFeedbackEnabled="true"
-            android:visibility="visible"
+            android:visibility="gone"
             app:srcCompat="@drawable/sample1" />
 
         <ImageView
@@ -46,7 +46,7 @@
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:clickable="true"
-            android:visibility="visible"
+            android:visibility="gone"
             app:srcCompat="@drawable/sample2" />
     </LinearLayout>
 

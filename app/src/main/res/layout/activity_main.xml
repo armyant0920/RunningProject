@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@drawable/kevin_background"
     android:orientation="vertical"
     android:padding="20dp"
     tools:context=".MainActivity">
@@ -160,42 +160,41 @@
         android:layout_height="match_parent"
 
         android:baselineAligned="false"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:visibility="gone">
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="327dp"
+        android:layout_height="680dp">
 
         <SeekBar
             android:id="@+id/seekBar"
             style="@style/Widget.AppCompat.SeekBar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="0.7"
-            android:clickable="false"
-            android:indeterminate="false"
-            android:longClickable="false"
+
             android:max="100"
             android:maxHeight="10dip"
             android:min="0"
             android:minHeight="10dip"
-            android:progress="50"
             android:progressDrawable="@drawable/seekbar_bg1"
             android:rotation="90"
-            android:thumb="@drawable/pikachu"
+            android:thumb="@drawable/towel"
             android:tooltipText="跑道" />
 
-        <pl.droidsonroids.gif.GifImageView
-            android:id="@+id/Runner"
-            android:layout_width="match_parent"
-            android:layout_height="123dp"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
+
+        <!--        android:gravity="bottom"-->
+        <!--        android:clickable="false"-->
+        <!--        android:indeterminate="false"-->
+        <!--        android:longClickable="false"-->
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.3"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -226,6 +225,17 @@
 
         </LinearLayout>
 
-    </LinearLayout>
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/Runner"
+            android:layout_width="match_parent"
+            android:layout_height="123dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+    </FrameLayout>
 
 </LinearLayout>
