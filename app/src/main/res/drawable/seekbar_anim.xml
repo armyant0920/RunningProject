@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:oneshot="false" android:layout_height="50dp" android:layout_width="50dp">
+
+    <item android:drawable="@drawable/s1" android:duration="200" />
+
+    <item android:drawable="@drawable/s2" android:duration="200" />
+
+    <item android:drawable="@drawable/s3" android:duration="200" />
+
+    <item android:drawable="@drawable/s4" android:duration="200" />
+
+    <item android:drawable="@drawable/s5" android:duration="200" />
+
+    <item android:drawable="@drawable/s6" android:duration="200" />
+
+    <item android:drawable="@drawable/s7" android:duration="200" />
+
+    <item android:drawable="@drawable/s8" android:duration="200" />
+
+
+
+</animation-list>
+
+
+<!--    在AndroidStudio中強制規定帶animation-list節點xml文件必須放在res/drawable文件下-->

@@ -5,6 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+<<<<<<< Updated upstream
+=======
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.BitmapDrawable;
+>>>>>>> Stashed changes
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -38,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
     public static int sec,min;    //時間變數
     public static int count,goalnum;
     public static double percentage;
+    private AnimationDrawable scanAnimation;
 
     static Timer timer;
     Button reset,setGoal;
@@ -79,6 +87,8 @@ public class MainActivity extends AppCompatActivity {
         seekBar.setClickable(false);
         seekBar.setFocusable(false);
         seekBar.setEnabled(false);
+        scanAnimation = (AnimationDrawable) getResources().getDrawable(R.drawable.seekbar_anim);
+        seekBar.setThumb(scanAnimation);
 
         Intent i = new Intent(this, ShakeService.class);
         startService(i);
@@ -123,8 +133,56 @@ public class MainActivity extends AppCompatActivity {
         gifSetting();
 
 
+<<<<<<< Updated upstream
     }
 
+=======
+//設定動畫
+//        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+//
+//            int progress = 0;
+//
+//            @Override
+//
+//            public void onProgressChanged(SeekBar seekBar, int progresValue, boolean fromUser) {
+//
+//                progress = progresValue;
+//
+//                Resources res = getResources();
+//                Drawable thumb = res.getDrawable(R.drawable.pikachu);
+//                int h = progress * 15;
+//                int w = h;
+//                Bitmap bmpOrg = ((BitmapDrawable) thumb).getBitmap();
+//                Bitmap bmpScaled = Bitmap.createScaledBitmap(bmpOrg, w, h, true);
+//                Drawable newThumb = new BitmapDrawable(res, bmpScaled);
+//                newThumb.setBounds(0, 0, newThumb.getIntrinsicWidth(), newThumb.getIntrinsicHeight());
+//                seekBar.setThumb(newThumb);
+//
+//            }
+//
+//            @Override
+//            public void onStartTrackingTouch(SeekBar seekBar) {
+//
+//            }
+//
+//            @Override
+//            public void onStopTrackingTouch(SeekBar seekBar) {
+//
+//            }
+//        });
+//
+//
+//設定動畫結束
+        //如果放seekBar.setThumb(scanAnimation)
+        //錯誤訊息:android.graphics.drawable.AnimationDrawable cannot be cast to android.graphics.drawable.BitmapDrawable
+
+   }
+
+
+
+
+
+>>>>>>> Stashed changes
     private void gifSetting(){
         //GIF設定
         GifImageView Runner = findViewById(R.id.Runner);
@@ -225,4 +283,16 @@ public class MainActivity extends AppCompatActivity {
         Log.d("Picpath1",String.valueOf(playButton.getDrawable()));
 
     }
+
+    // start()方法不能在onCreate()函數中調用。
+    // 因為AnimationDrawable並未完全關聯到Window。
+    // 如果你想立即執行動畫而不需要和用戶進行交互，
+    // 使用監聽方法onWindowFoucsChanged()。
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        scanAnimation.start();
+    }
+
+
 }
