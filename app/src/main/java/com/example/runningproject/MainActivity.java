@@ -2,16 +2,15 @@ package com.example.runningproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-<<<<<<< Updated upstream
-=======
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.BitmapDrawable;
->>>>>>> Stashed changes
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -133,10 +132,6 @@ public class MainActivity extends AppCompatActivity {
         gifSetting();
 
 
-<<<<<<< Updated upstream
-    }
-
-=======
 //設定動畫
 //        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 //
@@ -180,9 +175,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-
->>>>>>> Stashed changes
     private void gifSetting(){
         //GIF設定
         GifImageView Runner = findViewById(R.id.Runner);
