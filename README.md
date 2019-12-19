@@ -1,5 +1,5 @@
 # RunningProject
-跑步專案雛形<br />
+跑步專案雛形<br /><br />
 搖動手機使圖片移動<br /><br />
 1.加入Animation的running<br />
 <img src="https://github.com/armyant0920/RunningProject/blob/master/running1.gif" width="200" >  <br /><br />
